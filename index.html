@@ -16,6 +16,37 @@
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </head>
 <body>
-    
+    <div class="jumbotron text-center bg-dark text-white">
+        <h1 class="display-4">Train Sheduler</h1>
+        <p class="lead">This is a simple train shedule</p>
+    </div>
+
+    <div id="container-1" class="container row card mx-auto">
+        <h3 class="container-title text-center bg-primary text-white">Current Train Schedule</h3>
+        <div class="col-md-12">
+
+        </div>
+    </div>
+
+    <div id="container-2" class="container row card mx-auto">
+        <h3 class="container-title text-center bg-primary text-white">Add Train</h3>
+        <div class="col-md-12 input-group mb-3">
+            <h3>Train Name</h3>
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-md-12 input-group mb-3">
+            <h3>Destination</h3>
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-md-12 input-group mb-3">
+            <h3>First Train Time (HH:mm - military time)</h3>
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-md-12 input-group mb-3">
+            <h3>Frequency (min)</h3>
+            <input type="text" class="form-control">
+        </div>
+        <button id="submit-button" type="button" class="btn btn-primary col-md-2">Submit</button>
+    </div>
 </body>
 </html>

@@ -1,0 +1,21 @@
+h3 {
+    width: 100%;
+}
+
+#container-1 {
+    margin-top: 20px;
+    border: 5px solid #007bff;
+}
+
+#container-2 {
+    margin-top: 20px;
+    border: 5px solid #007bff;
+}
+
+.container-title {
+    
+}
+
+#submit-button {
+    margin-bottom: 20px;
+}
