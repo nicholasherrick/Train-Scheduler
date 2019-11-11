@@ -1,3 +1,24 @@
+body {
+    background-image: url(../images/diagonal_striped_brick.png);
+}
+
+#heading {
+    background-image: url(../images/train.jpg);
+}
+
+h1 {
+    color: black;
+    font-weight: bold;
+}
+
+p {
+    /* color: black; */
+    font-weight: bold;
+    background-color: #007bff;
+    width: 30%;
+    margin: auto;
+}
+
 h3 {
     width: 100%;
 }
@@ -12,9 +33,21 @@ h3 {
     border: 5px solid #007bff;
 }
 
-.container-title {
-    
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
 }
+
+th, td {
+    border-bottom: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+  }
 
 #submit-button {
     margin-bottom: 20px;

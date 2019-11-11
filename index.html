@@ -11,20 +11,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </head>
 <body>
-    <div class="jumbotron text-center bg-dark text-white">
+    <div id="heading" class="jumbotron text-center bg-dark text-white">
         <h1 class="display-4">Train Sheduler</h1>
-        <p class="lead">This is a simple train shedule</p>
+        <p class="lead">Add any train you want into this custom schedule!</p>
     </div>
 
     <div id="container-1" class="container row card mx-auto">
         <h3 class="container-title text-center bg-primary text-white">Current Train Schedule</h3>
-        <div class="col-md-12">
-
+        <div id="table" class="col-md-12 text-center">
+            <table id="table">
+                <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency (min)</th>
+                    <th>Next Arrival</th>
+                    <th>Minutes Away</th>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -32,19 +41,19 @@
         <h3 class="container-title text-center bg-primary text-white">Add Train</h3>
         <div class="col-md-12 input-group mb-3">
             <h3>Train Name</h3>
-            <input type="text" class="form-control">
+            <input id="train-name" type="text" class="form-control">
         </div>
         <div class="col-md-12 input-group mb-3">
             <h3>Destination</h3>
-            <input type="text" class="form-control">
+            <input id="destination" type="text" class="form-control">
         </div>
         <div class="col-md-12 input-group mb-3">
             <h3>First Train Time (HH:mm - military time)</h3>
-            <input type="text" class="form-control">
+            <input id="first-train-time" type="text" class="form-control">
         </div>
         <div class="col-md-12 input-group mb-3">
             <h3>Frequency (min)</h3>
-            <input type="text" class="form-control">
+            <input id="frequency" type="text" class="form-control">
         </div>
         <button id="submit-button" type="button" class="btn btn-primary col-md-2">Submit</button>
     </div>

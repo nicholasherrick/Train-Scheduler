@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-
-
-
-
 var firebaseConfig = {
     apiKey: "AIzaSyDw_WXfcHyQgXpH9vpvEVXLMvD6AqYDr4U",
     authDomain: "train-scheduler-53a2b.firebaseapp.com",
@@ -18,22 +14,71 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
-var trainName
-var destination
-var frequency
-var nextArrival
-var minutesAway
 
-database.ref().on("value", function(snapshot) {
+database.ref().on("child_added", function(childSnapshot) {
 
+    var trainName = childSnapshot.val().trainNameDb;
+    var destination = childSnapshot.val().destinationDb;
+    var frequency = childSnapshot.val().frequencyDb;
+    var firstTrainTime = childSnapshot.val().firstTrainTimeDb;
 
+    var firstTrainTimeConverted = moment(firstTrainTime, "HH:mm").subtract(1, "years");
+    console.log(firstTrainTimeConverted);
+
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+    
+    var diffTime = moment().diff(moment(firstTrainTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+
+    var tRemainder = diffTime % frequency;
+    console.log(tRemainder);
+
+    var minutesAway = frequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + minutesAway);
+    
+   var nextTrain = moment().add(minutesAway, "minutes");
+   console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm A"));
+
+    var newTableEntry = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(childSnapshot.val().destinationDb),
+        $("<td>").text(childSnapshot.val().frequencyDb),
+        $("<td>").text(moment(nextTrain).format("hh:mm A")),
+        $("<td>").text(minutesAway)
+        
+    );
+    $("#table > tbody").append(newTableEntry);
+
+    
+
+}, function(errorObject) {
+    console.log("The read failed: " + errorObject.code);
 
 });
 
+$("#submit-button").on("click", function(event) {
+    event.preventDefault();
 
+    var trainName = $("#train-name").val().trim();
+    var destination = $("#destination").val().trim();
+    var firstTrainTime = $("#first-train-time").val().trim();
+    var frequency = parseInt($("#frequency").val().trim());
 
+    console.log(trainName);
+    console.log(destination);
+    console.log(firstTrainTime);
+    console.log(frequency);
 
-
-
+    var trainData = {
+        trainNameDb: trainName,
+        destinationDb: destination,
+        firstTrainTimeDb: firstTrainTime,
+        frequencyDb: frequency,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+    }
+    database.ref().push(trainData);
+    // $("#train-name")[0].reset();
+});
 
 });
