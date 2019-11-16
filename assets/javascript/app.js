@@ -58,8 +58,7 @@ database.ref().on("child_added", function(childSnapshot) {
         $("<td>").text(frequency),
         // Displays time next train will arive in hours/minutes with am/pm format
         $("<td>").text(moment(nextTrain).format("hh:mm A")),
-        $("<td>").text(minutesAway)
-        
+        $("<td>").text(minutesAway),
     );
     // Append new row to the table body
     $("#table > tbody").append(newTableEntry);
